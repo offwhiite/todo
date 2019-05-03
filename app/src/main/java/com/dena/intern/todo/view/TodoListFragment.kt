@@ -1,4 +1,6 @@
 package com.dena.intern.todo.view
 
-class TodoListFragment {
+import androidx.fragment.app.Fragment
+
+class TodoListFragment : androidx.fragment.app.Fragment() {
 }
