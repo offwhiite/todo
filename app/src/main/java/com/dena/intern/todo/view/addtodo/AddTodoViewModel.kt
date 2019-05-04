@@ -1,13 +1,14 @@
 package com.dena.intern.todo.view.addtodo
 
-import android.app.Application
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import com.dena.intern.todo.infra.TodoDatabase
-import com.dena.intern.todo.infra.TodoEntity
+import androidx.lifecycle.ViewModelProvider
+import com.dena.intern.todo.infra.TodoRepository
 
-class AddTodoViewModel(application: Application) : ViewModel() {
+class AddTodoViewModel(todoRepository: TodoRepository) : ViewModel() {
 
-    val todo: LiveData<List<TodoEntity>> = TodoDatabase.getDatabase(application).todoDao().getAllWords()
-
+    class Factory(private val todoRepository: TodoRepository) : ViewModelProvider.NewInstanceFactory() {
+        override fun <T : ViewModel> create(modelClass: Class<T>): T {
+            return AddTodoViewModel(todoRepository) as T
+        }
+    }
 }
