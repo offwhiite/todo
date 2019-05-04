@@ -6,7 +6,7 @@ import java.util.*
 
 @Entity(tableName = "todo")
 data class TodoEntity(
-    @PrimaryKey val taskNo: Int,
+    @PrimaryKey(autoGenerate = true) val taskNo: Int = 0,
     val title: String,
     val detail: String,
     val expireTime: String?

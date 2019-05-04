@@ -9,5 +9,14 @@
     <fragment
         android:id="@+id/todolist"
         android:name="com.dena.intern.todo.view.list.TodoListFragment"
-        tools:layout="@layout/fragment_todolist" />
+        tools:layout="@layout/fragment_todolist">
+        <action
+            android:id="@+id/next_action"
+            app:popUpTo="@id/addtodo" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addtodo"
+        android:name="com.dena.intern.todo.view.addtodo.AddTodoFragment"
+        tools:layout="@layout/fragment_addtodo" />
 </navigation>
