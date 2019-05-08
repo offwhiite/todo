@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import com.dena.intern.todo.R
 import com.dena.intern.todo.infra.TodoDatabase
 import com.dena.intern.todo.infra.TodoRepository
@@ -17,9 +18,9 @@ class AddTodoFragment : Fragment() {
     lateinit var addTodoViewModel: AddTodoViewModel
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_addtodo, container, false)
     }
@@ -29,15 +30,19 @@ class AddTodoFragment : Fragment() {
 
         // TODO: Dagger2を使いたい気持ち
         addTodoViewModel = ViewModelProviders.of(
-                this,
-                AddTodoViewModel.Factory(TodoRepository(TodoDatabase.getDatabase(activity!!.application).todoDao()))
+            this,
+            AddTodoViewModel.Factory(TodoRepository(TodoDatabase.getDatabase(activity!!.application).todoDao()))
         )
-                .get(AddTodoViewModel::class.java)
+            .get(AddTodoViewModel::class.java)
 
         saveButton.setOnClickListener {
+
             addTodoViewModel.onClickSaveButton(
-                    title.text.toString(), detail.text.toString(), expire.text.toString()
+                title = title.text.toString(), detail = detail.text.toString(), date = expire.text.toString()
             )
+
+
+            findNavController().popBackStack()
         }
     }
 }

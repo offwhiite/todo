@@ -26,5 +26,12 @@ object Dep {
             val serializationCommon = "org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.10.0"
             val serializationIos = "org.jetbrains.kotlinx:kotlinx-serialization-runtime-native:0.10.0"
         }
+
+        object ViewModel {
+            val lifecycle_version = "2.1.0-alpha04"
+            val lifecycleViewModel = "androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version"
+            val lifecycleExtensions = "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
+            val lifecycleViewModelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+        }
     }
 }
