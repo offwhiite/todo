@@ -6,11 +6,11 @@ import androidx.room.Insert
 import androidx.room.Query
 
 @Dao
-interface TodoDao {
+interface TaskDao {
 
     @Query("SELECT * from todo")
-    fun getAllWords(): LiveData<List<TodoEntity>>
+    fun getAllWords(): LiveData<List<TaskEntity>>
 
     @Insert
-    fun insert(todoEntity: TodoEntity)
+    fun insert(taskEntity: TaskEntity)
 }

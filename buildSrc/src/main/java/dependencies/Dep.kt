@@ -28,10 +28,18 @@ object Dep {
         }
 
         object ViewModel {
-            val lifecycle_version = "2.1.0-alpha04"
+            val lifecycle_version = "2.2.0-alpha01"
             val lifecycleViewModel = "androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version"
             val lifecycleExtensions = "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
             val lifecycleViewModelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+            val lifecycleLiveDataKtx = "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+        }
+
+        object AppCompat {
+            val appCompat_verion = "1.1.0-alpha05"
+            val appCompat = "androidx.appcompat:appcompat:$appCompat_verion"
+            val fragment_verion = "1.1.0-alpha08"
+            val fragment = "androidx.fragment:fragment:$fragment_verion"
         }
     }
 }

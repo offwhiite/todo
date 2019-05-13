@@ -8,10 +8,10 @@ import kotlinx.coroutines.CoroutineName
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class TodoRepository(private val todoDao: TodoDao) {
+class TaskRepository(private val taskDao: TaskDao) {
 
     fun fetch(): LiveData<List<Task>> {
-        return Transformations.switchMap(todoDao.getAllWords()) {
+        return Transformations.switchMap(taskDao.getAllWords()) {
             val mutableLiveData = MutableLiveData<List<Task>>()
             mutableLiveData.postValue(it.map { entity -> Translate.toModel(entity) })
             mutableLiveData
@@ -22,22 +22,22 @@ class TodoRepository(private val todoDao: TodoDao) {
 
     suspend fun add(task: Task) {
         return withContext(Dispatchers.Default) {
-            todoDao.insert(Translate.toEntity(task))
+            taskDao.insert(Translate.toEntity(task))
         }
     }
 
     private object Translate {
 
-        fun toModel(todoEntity: TodoEntity): Task {
+        fun toModel(taskEntity: TaskEntity): Task {
             return Task(
-                todoEntity.title,
-                todoEntity.detail,
-                todoEntity.expireTime!!
+                taskEntity.title,
+                taskEntity.detail,
+                taskEntity.expireTime!!
             )
         }
 
-        fun toEntity(task: Task): TodoEntity {
-            return TodoEntity(title = task.title, detail = task.detail, expireTime = task.expireTime)
+        fun toEntity(task: Task): TaskEntity {
+            return TaskEntity(title = task.title, detail = task.detail, expireTime = task.expireTime)
         }
     }
 }

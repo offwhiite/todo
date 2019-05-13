@@ -8,8 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.dena.intern.todo.R
-import com.dena.intern.todo.infra.TodoDatabase
-import com.dena.intern.todo.infra.TodoRepository
+import com.dena.intern.todo.infra.TaskDatabase
+import com.dena.intern.todo.infra.TaskRepository
 import kotlinx.android.synthetic.main.fragment_addtodo.*
 
 class AddTodoFragment : Fragment() {
@@ -31,7 +31,7 @@ class AddTodoFragment : Fragment() {
         // TODO: Dagger2を使いたい気持ち
         addTodoViewModel = ViewModelProviders.of(
             this,
-            AddTodoViewModel.Factory(TodoRepository(TodoDatabase.getDatabase(activity!!.application).todoDao()))
+            AddTodoViewModel.Factory(TaskRepository(TaskDatabase.getDatabase(activity!!.application).todoDao()))
         )
             .get(AddTodoViewModel::class.java)
 

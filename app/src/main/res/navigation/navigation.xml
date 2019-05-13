@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/todolist"
-        android:name="com.dena.intern.todo.view.list.TodoListFragment"
+        android:name="com.dena.intern.todo.view.list.TaskListFragment"
         tools:layout="@layout/fragment_todolist">
         <action
             android:id="@+id/next_action"
